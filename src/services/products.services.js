@@ -9,6 +9,13 @@ export const getList = async () => {
   const list = await prisma.products.findMany();
   return list;
 };
+export const getAProduct = async (req) => {
+  const { id } = req.params;
+  const product = await prisma.products.findUnique({
+    where: { id: Number(id) },
+  });
+  return product;
+};
 
 export const createNew = async (req) => {
   const res = await prisma.products.create({

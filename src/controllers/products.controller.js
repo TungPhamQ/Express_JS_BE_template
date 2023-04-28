@@ -6,6 +6,7 @@ import {
   createNew,
   editAProduct,
   deleteAProduct,
+  getAProduct,
 } from "../services/products.services.js";
 
 export const getListProduct = async (req, res) => {
@@ -14,6 +15,15 @@ export const getListProduct = async (req, res) => {
     console.log("result", result);
     res.send(result);
     return result;
+  } catch (err) {
+    console.log("err", err);
+  }
+};
+
+export const getProduct = async (req, res) => {
+  try {
+    const product = await getAProduct(req);
+    res.send({ data: product });
   } catch (err) {
     console.log("err", err);
   }
